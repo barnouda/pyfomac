@@ -1,0 +1,118 @@
+\documentclass[a3paper,10pt,portrait]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{multirow}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+
+% lignes horizontales du tableau
+\makeatletter
+\def\hlinewd#1{%
+\noalign{\ifnum0=`}\fi\hrule \@height #1 %
+\futurelet\reserved@a\@xhline}
+\makeatother
+\newcommand{\hhline}{\hlinewd{1pt}}	% pour les 2 lignes en haut et en bas du tableau
+\renewcommand{\hline}{\hlinewd{0.1pt}}	% pour la ligne de séparation des titres de colonnes
+
+\newcommand{\incr}{$\phantom{mm}$}
+
+\usepackage{fancyvrb}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{center}
+
+\Huge{\textbf{PyFoMaC} -- Language Comparison Cheat Sheet}
+\normalsize
+
+\bigskip
+
+\bigskip
+
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{4cm} p{4cm} p{4cm}}
+\hhline
+ 			& C		& Fortran 90	& Fortran 77			& Python 		& Matlab 	\\ 
+\hhline
+% mathematical operators
+adds			& \verb|+|		& \verb|+| & \verb|| 		& \verb|+| 		& \verb|+| 		\\
+substracts		& \verb|-|		& \verb|-| & \verb|| 		& \verb|-| 		& \verb|-| 		\\
+multiplies		& \verb|*|		& \verb|*| & \verb|| 		& \verb|*| 		& \verb|*| 		\\
+power		& \verb|#include <math.h>| 		& \verb|**| & \verb|| 		& \verb|**| 		& \verb|^| 		\\
+& \verb|pow(a,b)| & & & & \\
+divides		& \verb|/|		& \verb|/| & \verb|| 		& \verb|/| or \verb|//| (floor div) & \verb|/| 	\\
+modulus		& \verb|%|		& \verb|mod(a,b)| & \verb|| 		& \verb|%| 		& \verb|%| 		\\
+& & & & \\
+increments		& \verb|i++|		& \verb|i = i+1| & \verb|| 		& \verb|i += 1| 		& \verb|i = i+1| 	\\	
+decrements		& \verb|i--|		& \verb|i = i-1| & \verb|| 		& \verb|i -= 1| 		& \verb|i = i-1| 	\\	
+\hline
+% comparison operators
+equals		& \verb|==| 		& \verb|==| & \verb|.eq.| 	& \verb|==|		& \verb|==|		\\
+not equals		& \verb|!=|		& \verb|/=| & \verb|.ne.| 	& \verb|!=| 		& \verb|~=|	\\
+less than		& \verb|<|		& \verb|<| & \verb|.lt.| 	& \verb|<| 		& \verb|<| 	\\	
+greater than		& \verb|>|		& \verb|>| & \verb|.gt.| 	& \verb|>| 		& \verb|>| 	\\	
+< or equal to	& \verb|<=|		& \verb|<=| & \verb|.le.| 	& \verb|<=| 		& \verb|<=| 		\\
+> or equal to	& \verb|>=|		& \verb|>=| & \verb|.ge.| 	& \verb|>=| 		& \verb|>=| 		\\
+\hline
+% logical operators
+logical or		& \verb=||=		& \multicolumn{2}{p{3.0cm}}{\texttt{.or.}}	& \verb|or| 		& \verb=||= 	\\
+logical and		& \verb|&&|		& \multicolumn{2}{p{3.0cm}}{\texttt{.and.}} 	& \verb|and| 		& \verb|&&| 	\\
+logical not		& \verb|!|		& \multicolumn{2}{p{3.0cm}}{\texttt{.not.}} 	& \verb|not| 		& \verb|~| 	\\
+\hline
+% booleans
+true			& anything but \verb|0| & \multicolumn{2}{p{3.0cm}}{\texttt{.true.}} 	& \verb|True| 		& \verb|True| 		\\
+false		& \verb|0|			& \multicolumn{2}{p{3.0cm}}{\texttt{.false.}} 	& \verb|False| 		& \verb|False| 		\\
+\hline
+% constructions
+if			& \verb|if (cond.)|			& \verb|if (cond.) then|				& \verb|| & \verb|if cond.:|		& \verb|if cond.|					\\
+			& \verb|{| 				& \incr\verb|instr.| 			& \verb|| & \incr\verb|instr.|	& \incr\verb|instr.|			\\
+		& \incr\verb|instr.;|	& \verb|else if / elseif (cond.) then| & & \verb|elif cond.:| & \verb|elseif cond.|								\\
+			& \verb|}| 				& \incr\verb|instr.| 			& \verb|| & \incr\verb|instr.|	& \incr\verb|instr.| 			\\
+			& \verb|else if (cond.)| 		& \verb|else| 						& \verb|| & \verb|else:| & \verb|else| 									\\
+			& \verb|{| 				& \incr\verb|instr.| 			& \verb|| & \incr\verb|instr.|	& \incr\verb|instr.| 			\\
+			& \incr\verb|instr.;| 	& \verb|endif / end if| 			& \verb|| & \verb||				& \verb|end| 						\\
+			& \verb|}| 				& \verb|| & \verb|| & \verb|| & \verb|| \\
+			& \verb|else| 				& \verb|| & \verb|| & \verb|| & \verb|| \\
+			& \verb|{| 				& \verb|| & \verb|| & \verb|| & \verb|| \\
+			& \incr\verb|instr.;| 			& \verb|| & \verb|| & \verb|| & \verb|| \\
+			& \verb|}| 				& \verb|| & \verb|| & \verb|| & \verb|| \\
+for			& \verb|for (i=0,i<n,i++)|	& \verb|do i=1,n|	& \incr\verb|do 10,i=1,n|	& \verb|for i in range(n):|	& \verb|for i=1:n|	\\
+			& \verb|{| 			& \incr\verb|instr.|	& \incr\incr\verb|instr.| 	& \incr\verb|instr.| 		& \incr\verb|instr.| 	\\
+			& \incr\verb|instr.;| 		& \verb|enddo| 		& \verb|10 continue| 		& \verb|| 			& \verb|end|		\\
+			& \verb|}| 			& \verb|| 		& \verb|| 			& \verb|| 			& \verb||		\\
+while & \verb|while (cond.)|	& \verb|do while (cond.)|	& \incr\verb|do 10 while (cond.)| & \verb|while cond.:| & \verb|while cond.| \\
+& \verb|{| 			& \incr\verb|instr.| 		& \incr\incr\verb|instr.| & \incr\verb|instr.|& \incr\verb|instr.| \\
+& \incr\verb|instr.;| 		& \verb|end do| 		& \verb|10 continue| & & \verb|end| \\
+& \verb|}| 			& 				& & & \\
+\hline
+%
+next iteration	& \verb|continue;|	& \verb|cycle| & \verb|| 		& \verb|continue| 	& \verb|continue| 	\\
+exits loop		& \verb|break;|		& \verb|exit| & \verb|| 		& \verb|break| 		& \verb|break| 	\\	
+exits program	& \verb|return 1;|	& \verb|call exit([status])| & \verb|| 		& \verb|import sys| & \verb|return|	\\
+& & & & \verb|sys.exit()| & \\
+\hline
+% algebra
+%nb of el. in array & & \verb|size(a)| & & & \verb|numel(a)| \\
+%\hline
+%
+multiple line statement	& continue until next \verb|;|	& \verb|&| & \verb|| 		& \verb|\| 		& \verb|...| 		\\
+comment & \verb|//| or \verb|/* ... */| & \verb|!| & & \verb|#| & \verb|%| \\
+\hhline
+% & \verb|| & \verb|| & \verb|| & \verb|| & \verb|| & \verb|| & \verb|| \\ 
+\end{tabular}
+\end{center}
+
+\vfill
+Anne Barnoud (anne.barnoud@gmail.com), last update: 2018
+
+
+\end{document}

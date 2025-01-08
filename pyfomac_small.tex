@@ -1,0 +1,76 @@
+\documentclass[a5paper,10pt,landscape]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{multirow}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+
+% lignes horizontales du tableau
+\makeatletter
+\def\hlinewd#1{%
+\noalign{\ifnum0=`}\fi\hrule \@height #1 %
+\futurelet\reserved@a\@xhline}
+\makeatother
+\newcommand{\hhline}{\hlinewd{1pt}}	% pour les 2 lignes en haut et en bas du tableau
+\renewcommand{\hline}{\hlinewd{0.1pt}}	% pour la ligne de séparation des titres de colonnes
+
+\newcommand{\incr}{$\phantom{mm}$}
+
+\usepackage{fancyvrb}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{center}
+
+\Huge{\textbf{PyFoMaC}}
+\normalsize
+
+\bigskip
+
+\bigskip
+
+\begin{tabular}{p{2.5cm} p{3.5cm} p{5.5cm} p{2cm} p{2cm}}
+\hhline
+ 			& C		& Fortran 90		& Python 		& Matlab 	\\ 
+\hhline
+% comparison operators
+not equals		& \verb|!=|		& \verb|/=| 	& \verb|!=| 		& \verb|~=|	\\
+\hline
+% logical operators
+logical or		& \verb=||=		& \texttt{.or.}	& \verb|or| 		& \verb=||= 	\\
+logical and		& \verb|&&|		& \texttt{.and.} 	& \verb|and| 		& \verb|&&| 	\\
+logical not		& \verb|!|		& \texttt{.not.} 	& \verb|not| 		& \verb|~| 	\\
+\hline
+% booleans
+true			& anything but \verb|0| & \texttt{.true.} 	& \verb|True| 		& \verb|True| 		\\
+false		& \verb|0|			& \texttt{.false.} 	& \verb|False| 		& \verb|False| 		\\
+\hline
+% constructions
+else if		& \verb|else if (cond)|	& \verb|else if / elseif (cond) then| & \verb|elif cond:| & \verb|elseif cond|								\\
+\hline
+%
+next iteration	& \verb|continue;|	& \verb|cycle| 		& \verb|continue| 	& \verb|continue| 	\\
+exits loop		& \verb|break;|		& \verb|exit| 	& \verb|break| 		& \verb|break| 	\\	
+exits program	& \verb|return 1;|	& \verb|call exit([])| & \verb|import sys| & \verb|return|	\\
+& & & \verb|sys.exit()| & \\
+\hline
+multiple line & continue until next \verb|;|	& \verb|&| 	& \verb|\| 		& \verb|...| 		\\
+comment & \verb|//| or \verb|/* ... */| & \verb|!| & \verb|#| & \verb|%| \\
+\hhline
+\end{tabular}
+\end{center}
+
+\vfill
+Anne Barnoud (anne.barnoud@gmail.com), last update: 2018%\today
+
+\end{document}
