@@ -14,14 +14,14 @@ Juggling between programming languages? This cheat sheet is here to help!
 
 * Small version overview
 
-![](pyfomac_small_overview.png)
+![](img/pyfomac_small_overview.png)
 
 * Large version overview
 
-![](pyfomac_large_overview.png)
+![](img/pyfomac_large_overview.png)
 
 ## Usage
 
 You may either:
 * download the pdf cheat sheet directly,
-* or customize it using the tex files.
+* or customize it using the source files.
