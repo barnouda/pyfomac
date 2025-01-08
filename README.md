@@ -14,11 +14,11 @@ Juggling between programming languages? This cheat sheet is here to help!
 
 * Small version overview
 
-![](img/pyfomac_small_overview.png)
+![](img/pyfomac_small_overview.png?)
 
 * Large version overview
 
-![](img/pyfomac_large_overview.png)
+![](img/pyfomac_large_overview.png?)
 
 ## Usage
 
