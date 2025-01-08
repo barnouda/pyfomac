@@ -21,3 +21,9 @@ This cheat sheet is here to help.
 * Large version overview
 
 ![](pyfomac_large_overview.png)
+
+## Usage
+
+You may either:
+* download the pdf cheat sheet directly,
+* or customize it using the tex files.
