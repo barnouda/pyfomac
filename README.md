@@ -2,15 +2,13 @@
 
 ## Overview
 
-Juggling between programming languages?
+Juggling between programming languages? This cheat sheet is here to help!
 
-//, !, # or % to comment?
+`//`, `!`, `#` or `%` to comment?
 
-"else if", "elseif" or "elif"?
+`else if`, `elseif` or `elif`?
 
-"break" or "exit"?*
-
-This cheat sheet is here to help.
+`break` or `exit`?
 
 ## Versions
 
